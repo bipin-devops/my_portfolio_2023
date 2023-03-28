@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 import "./Work.scss";
@@ -76,6 +77,8 @@ const Work = () => {
                     transition={{
                       duration: 0.3,
                     }}
+                    data-tip
+                    data-tooltip-id={work.projectLink}
                     className=" app__flex"
                   >
                     <AiFillEye />
@@ -88,12 +91,20 @@ const Work = () => {
                     transition={{
                       duration: 0.3,
                     }}
+                    data-tip
+                    data-tooltip-id={work.codeLink}
                     className=" app__flex"
                   >
                     <AiFillGithub />
                   </motion.div>
                 </a>
               </motion.div>
+              <ReactTooltip id={work.codeLink} className="common-tooltip">
+                View Code
+              </ReactTooltip>
+              <ReactTooltip id={work.projectLink} className="common-tooltip">
+                Watch Live
+              </ReactTooltip>
             </div>
 
             <div className="app__work-content app__flex">

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "../../wrapper";
@@ -64,9 +63,8 @@ const Skills = () => {
                     </motion.div>
                     <ReactTooltip
                       id={work.name}
-                      effect="solid"
-                      arrowColor="#fff"
-                      className="skills-tooltip"
+                      noArrow
+                      className="common-tooltip"
                     >
                       {work.desc}
                     </ReactTooltip>
