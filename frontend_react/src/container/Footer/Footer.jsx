@@ -23,6 +23,9 @@ const Footer = () => {
   };
 
   const handleSubmit = () => {
+    if (name === "" || email === "" || message === "") {
+      return;
+    }
     setLoading(true);
 
     const contact = {
@@ -62,7 +65,7 @@ const Footer = () => {
             <input
               className="p-text"
               type="text"
-              placeholder="Your Name"
+              placeholder="Your Name (required)"
               name="name"
               value={name}
               onChange={handleChangeInput}
@@ -72,7 +75,7 @@ const Footer = () => {
             <input
               className="p-text"
               type="email"
-              placeholder="Your Email"
+              placeholder="Your Email (required)"
               name="email"
               value={email}
               onChange={handleChangeInput}
@@ -81,19 +84,20 @@ const Footer = () => {
           <div>
             <textarea
               className="p-text"
-              placeholder="Your Message"
+              placeholder="Your Message (required)"
               value={message}
               name="message"
               onChange={handleChangeInput}
             />
           </div>
+
           <button type="button" className="p-text" onClick={handleSubmit}>
             {loading ? "Sending" : "Send Message"}
           </button>
         </div>
       ) : (
         <div>
-          <h3 className="head-text">Thank you for getting in touch</h3>
+          <h3 className="head-text">Thank You for Getting in Touch</h3>
         </div>
       )}
     </>
