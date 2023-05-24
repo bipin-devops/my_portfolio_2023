@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./About.scss";
 import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "../../wrapper";
-
+import Typewriter from "typewriter-effect";
 import { urlFor, client } from "../../client";
 
 const About = () => {
@@ -16,15 +16,40 @@ const About = () => {
 
   return (
     <>
-      <h2 className="head-text">
-        I am aware of the fact
-        <br />
-        <span>"Outstanding Development"</span>
-        <br />
-        means
-        <br />
-        <span>"Successful Business"</span>
-      </h2>
+      <div className="head-text">
+        <div>My Quick Background</div>
+
+        <div className="typewritter">
+          <Typewriter
+            options={{
+              autoStart: true,
+              loop: true,
+            }}
+            onInit={(typewriter) => {
+              typewriter
+                .typeString(`<span>Web Development</span>`)
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString(`<span>React JS</span>`)
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString(`<span>Node JS</span>`)
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString(`<span>REST API</span>`)
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString(`<span>Full Stack Development</span>`)
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString(`<span>Continous Learning...</span>`)
+                .pauseFor(1000)
+                .deleteAll()
+                .start();
+            }}
+          />
+        </div>
+      </div>
       <div className="app__profiles">
         {abouts.map((about, index) => (
           <motion.div
