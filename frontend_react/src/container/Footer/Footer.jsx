@@ -10,24 +10,42 @@ const Footer = () => {
     name: "",
     email: "",
     message: "",
+    error: "",
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
-  const { name, email, message } = formData;
+  const { name, email, message, error } = formData;
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+
+    if (error && name in formData) {
+      const hasEmptyField = Object.values({
+        ...formData,
+        [name]: value,
+      }).some((field) => field === "");
+      if (hasEmptyField) {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          error: "All fields are required",
+        }));
+      } else {
+        setFormData((prevFormData) => ({ ...prevFormData, error: "" }));
+      }
+    }
   };
 
   const handleSubmit = () => {
     if (name === "" || email === "" || message === "") {
+      setFormData({ ...formData, error: "All fields are required" });
       return;
     }
-    setLoading(true);
 
+    setLoading(true);
+    setFormData({ ...formData, error: "" });
     const contact = {
       _type: "contact",
       name: name,
@@ -65,7 +83,7 @@ const Footer = () => {
             <input
               className="p-text"
               type="text"
-              placeholder="Your Name (required)"
+              placeholder="Your Name"
               name="name"
               value={name}
               onChange={handleChangeInput}
@@ -75,7 +93,7 @@ const Footer = () => {
             <input
               className="p-text"
               type="email"
-              placeholder="Your Email (required)"
+              placeholder="Your Email"
               name="email"
               value={email}
               onChange={handleChangeInput}
@@ -84,13 +102,13 @@ const Footer = () => {
           <div>
             <textarea
               className="p-text"
-              placeholder="Your Message (required)"
+              placeholder="Your Message"
               value={message}
               name="message"
               onChange={handleChangeInput}
             />
           </div>
-
+          {formData.error && <p className="error-text">{formData.error}</p>}
           <button type="button" className="p-text" onClick={handleSubmit}>
             {loading ? "Sending" : "Send Message"}
           </button>

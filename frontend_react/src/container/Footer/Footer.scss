@@ -100,6 +100,11 @@
     cursor: pointer;
   }
 
+  .error-text {
+    color: red;
+    font-size: "9px";
+  }
+
   @media screen and (max-width: 768px) {
     width: 100%;
     margin: 1rem 0;
