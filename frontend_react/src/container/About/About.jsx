@@ -27,6 +27,9 @@ const About = () => {
             }}
             onInit={(typewriter) => {
               typewriter
+                .typeString(`<span>IT Support</span>`)
+                .pauseFor(1000)
+                .deleteAll()
                 .typeString(`<span>Web Development</span>`)
                 .pauseFor(1000)
                 .deleteAll()
@@ -37,9 +40,6 @@ const About = () => {
                 .pauseFor(1000)
                 .deleteAll()
                 .typeString(`<span>REST API</span>`)
-                .pauseFor(1000)
-                .deleteAll()
-                .typeString(`<span>Full Stack Development</span>`)
                 .pauseFor(1000)
                 .deleteAll()
                 .typeString(`<span>Continous Learning...</span>`)
