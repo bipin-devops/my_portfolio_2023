@@ -8,7 +8,10 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   return (
     <nav className="app__navbar">
-      <div className="app__navbar-logo">
+      <div
+        className="app__navbar-logo"
+        onClick={() => (window.location.href = "/")}
+      >
         <img src={images.logo} alt="logo" />
       </div>
       <ul className="app__navbar-links">
