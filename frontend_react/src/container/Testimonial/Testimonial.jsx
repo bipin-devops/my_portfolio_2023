@@ -8,29 +8,29 @@ import "./Testimonial.scss";
 
 const Testimonial = () => {
   const [brands, setBrands] = useState([]);
-  const [testimonials, setTestimonials] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [testimonials, setTestimonials] = useState([]);
+  // const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const query = '*[_type == "testimonials"]';
+    // const query = '*[_type == "testimonials"]';
     const brandsQuery = '*[_type == "brands"]';
-    client.fetch(query).then((data) => {
-      setTestimonials(data);
-    });
+    // client.fetch(query).then((data) => {
+    //   setTestimonials(data);
+    // });
     client.fetch(brandsQuery).then((data) => {
       setBrands(data);
     });
   }, []);
 
-  const testim = testimonials[currentIndex];
+  // const testim = testimonials[currentIndex];
 
-  const handleClick = (index) => {
-    setCurrentIndex(index);
-  };
+  // const handleClick = (index) => {
+  //   setCurrentIndex(index);
+  // };
 
   return (
     <>
-      {testimonials.length && (
+      {/* {testimonials.length && (
         <>
           <div className="app__testimonial-item app__flex">
             <img src={urlFor(testim.imageurl)} alt="testimonial" />
@@ -69,7 +69,7 @@ const Testimonial = () => {
             </div>
           </div>
         </>
-      )}
+      )} */}
       <div className="app__testimonial-brands app__flex">
         {brands.map((brand) => (
           <motion.div
